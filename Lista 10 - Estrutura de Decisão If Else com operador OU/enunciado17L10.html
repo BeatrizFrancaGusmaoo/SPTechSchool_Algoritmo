@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Arrozinho de cada dia</h1>
+    <p>Qual o tipo de arroz usado?</p>
+    <select id="slt_tipo_arroz">
+        <option value="0" selected disabled>Selecione uma opção</option>
+        <option value="1">Integral</option>
+        <option value="2">Branco</option>
+    </select>
+    <p>Insira o tempo de cozimento em minutos:</p>
+    <input type="text" id="ipt_tempo_cozimento"> minutos
+    <p>Insira a quantidade de sal usada em gramas</p>
+    <input type="text" id="ipt_sal"> g
+    <br><br>
+    <button onclick="avaliar()">Avaliar arroz</button>
+    <br><br>
+    <span id="mensagem"></span>
+</body>
+</html>
+<script>
+    function avaliar() {
+        var tipo_arroz = Number(slt_tipo_arroz.value);
+        var tempo_cozimento = Number(ipt_tempo_cozimento.value);
+        var sal = Number(ipt_sal.value);
+
+        if (tipo_arroz == 1 || tipo_arroz == 2) {
+            if ((tipo_arroz == 1 && tempo_cozimento == 10 && sal <= 10) || tipo_arroz == 2 && tempo_cozimento == 20 && sal <= 15) {
+                mensagem.innerHTML = `Arroz perfeito`;
+            } else {
+                mensagem.innerHTML = `Seu arroz não está perfeito`;
+            }
+        }
+        
+    }
+</script>

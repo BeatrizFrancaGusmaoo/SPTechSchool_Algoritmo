@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="intervalo" style="display: block;">
+        <h3>Insira o intervalo da altura desejada para os próximos pilotos:</h3>
+        <p>Altura inicial de seleção:</p>
+        <input type="text" id="ipt_altura_inicial_piloto">
+        <p>Altura final de seleção:</p>
+        <input type="text" id="ipt_altura_final_piloto">
+        <h3>Insira o intervalo da altura desejada para os próximos jogadores de basquete:</h3>
+        <p>Altura inicial de seleção:</p>
+        <input type="text" id="ipt_altura_inicial_jogador">
+        <p>Altura final de seleção:</p>
+        <input type="text" id="ipt_altura_final_jogador">
+        <br><br>
+        <button onclick="selecionar()">Selecionar</button>
+    </div>
+    <div id="nova_pagina" style="display: none;">
+        <h1>Processo de seleção de novos atletas:</h1>
+        <h3>Critério de seleção de piloto: altura entre <span id="criterio_piloto"></span></h3>
+        <h3>Critério de seleção de jogador de basquete: altura entre <span id="criterio_jogador"></span></h3>
+        <p>Entre com seu nome:</p>
+        <input type="text" id="ipt_nome_candidato">
+        <p>Entre com sua altura:</p>
+        <input type="text" id="ipt_altura_candidato">
+        <br><br>
+        <p>Selecione a modalidade que deseja participar:</p>
+        <select id="slt_modalidade" onchange="modalidade()">
+            <option value="0" disabled selected>Selecione uma modalidade</option>
+            <option value="1">Piloto</option>
+            <option value="2">Jogador de basquete</option>
+        </select>
+        <br><br>
+        <span id="mensagem"></span>
+    </div>
+</body>
+</html>
+<script>
+    var altura_inicial_piloto = 0;
+    var altura_final_piloto = 0;
+    var altura_inicial_jogador = 0;
+    var altura_final_jogador = 0;
+    var altura_candidato = 0;
+    var nome_candidato = '';
+
+    function selecionar() {
+        altura_inicial_piloto = Number(ipt_altura_inicial_piloto.value);
+        altura_final_piloto = Number(ipt_altura_final_piloto.value);
+        altura_inicial_jogador = Number(ipt_altura_inicial_jogador.value);
+        altura_final_jogador = Number(ipt_altura_final_jogador.value);
+
+        if (altura_inicial_piloto >= 1 && altura_final_piloto > altura_inicial_piloto) {
+            intervalo.style.display = 'none';
+            nova_pagina.style.display = 'block';
+            criterio_piloto.innerHTML = `${altura_inicial_piloto} - ${altura_final_piloto}`;
+            criterio_jogador.innerHTML = `${altura_inicial_jogador} - ${altura_final_jogador}`;
+        } else if (altura_inicial_jogador >= 1.5 && altura_final_jogador > altura_inicial_jogador) {
+            intervalo.style.display = 'none';
+            nova_pagina.style.display = 'block';
+            criterio_piloto.innerHTML = `${altura_inicial_piloto} - ${altura_final_piloto}`;
+            criterio_jogador.innerHTML = `${altura_inicial_jogador} - ${altura_final_jogador}`;
+        } else {
+            alert (`Por favor, insira valores válidos!`);
+        }
+    }
+
+    function modalidade() {
+        nome_candidato = ipt_nome_candidato.value;
+        altura_candidato = Number(ipt_altura_candidato.value);
+
+        var valor_select = Number(slt_modalidade.value);
+        if (valor_select == 1 && altura_candidato >= altura_inicial_piloto && altura_candidato <= altura_final_piloto) {
+            mensagem.innerHTML += `O candidato ${nome_candidato} com altura de ${altura_candidato}m participará do processo de seleção de piloto.<br><br>`;
+        } else if (valor_select == 2 && altura_candidato >= altura_inicial_jogador && altura_candidato <= altura_final_jogador) {
+            mensagem.innerHTML += `O candidato ${nome_candidato} com altura de ${altura_candidato}m participará do processo de seleção de jogador de basquete.<br><br>`;
+        } else {
+            mensagem.innerHTML += `Infelizmente o candidato ${nome_candidato} com altura de ${altura_candidato}m não atende os requisitos.<br><br>`;
+        }
+    }
+</script>

@@ -1,0 +1,41 @@
+<!-- 3. Para o ser humano, a temperatura é...
+●	Congelante (até menos de 14ºC)
+●	Com Frio (entre 14ºC e 21ºC)
+●	Confortável (mais de 21ºC até 24ºC)
+●	Com Calor (mais de 24ºC até 31ºC)
+●	Calor escaldante (mais de 31ºC)
+Crie um programa que, ao ler uma temperatura, exiba uma dessas situações de temperatura. -->
+
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperatura</title>
+</head>
+<body>
+    <h1>Temperatura Corporal Humana</h1>
+    <p>Insira sua temperatura atual em graus celsius:</p>
+    <input type="text" id="ipt_temperatura">
+    <button onclick="verificar()">Verificar</button>
+    <br><br>
+    <span id="span"></span>
+</body>
+</html>
+<script>
+    function verificar() {
+        var temperatura = Number(ipt_temperatura.value);
+        if (temperatura < 14) {
+            span.innerHTML = `Congelante`;
+        } else if (temperatura >= 14 && temperatura <= 21) {
+            span.innerHTML = `Com frio`;
+        } else if (temperatura > 21 && temperatura <= 24) {
+            span.innerHTML = `Confortável`;
+        } else if (temperatura > 24 && temperatura <= 31) {
+            span.innerHTML = `Com calor`;
+        } else {
+            span.innerHTML = `Calor escaldante`;
+        }
+    }
+</script>

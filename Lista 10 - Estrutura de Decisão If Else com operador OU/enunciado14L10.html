@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>São Paulo</title>
+</head>
+<body>
+    <h1>Bilhete Único</h1>
+    <p>Selecione o tipo de passageiro:</p>
+    <select id="slt_passageiro">
+        <option value="0">Selecione uma opção</option>
+        <option value="1">Comum</option>
+        <option value="2">Estudante</option>
+        <option value="3">Idoso / PNE</option>
+    </select>
+    <p>Qual o tipo de passagem?</p>
+    <select id="slt_passagem">
+        <option value="0">Selecione uma opção</option>
+        <option value="1">Passagem Única</option>
+        <option value="2">Integração</option>
+    </select>
+    <br><br>
+    <button onclick="simular()">Simular preço</button>
+    <br><br>
+    <span id="show"></span>
+</body>
+</html>
+<script>
+    function simular() {
+        var tipo_passageiro = slt_passageiro.value;
+        var tipo_passagem = slt_passagem.value;
+        var passagemUnica = 4.40;
+        var passagemIntegracao = 5.90;
+
+        // verificação de seleção 0
+        if (tipo_passageiro == 0) {
+            alert (`Opção inválida! Selecione um tipo de passageiro.`);
+            show.style.display = 'none';
+        } else if (tipo_passagem == 0) {
+            alert (`Opção inválida! Selecione um tipo de passagem.`);
+            show.style.display = 'none';
+        } else if (tipo_passageiro == 1) {
+            if (tipo_passagem == 1) {
+                show.innerHTML = `Valor da passagem escolhida: R$${passagemUnica}`;
+                show.style.display = 'block';
+            } else {
+                show.innerHTML = `Valor da passagem escolhida: R$${passagemIntegracao}`;
+                show.style.display = 'block';
+            }
+        } else if (tipo_passageiro == 2) {
+            if (tipo_passagem == 1) {
+                show.innerHTML = `Valor da passagem escolhida: R$${(passagemUnica*50)/100}`;
+                show.style.display = 'block';
+            } else {
+                show.innerHTML = `Valor da passagem escolhida: R$${(passagemIntegracao*50)/100}`;
+                show.style.display = 'block';
+            }
+        } else {
+            show.innerHTML = `Valor da passagem escolhida: R$ 0.00. Você possui gratuidade!`;
+            show.style.display = 'block';
+        }
+    }
+</script>

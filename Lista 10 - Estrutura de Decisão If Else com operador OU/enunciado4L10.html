@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagamento</title>
+</head>
+<body>
+    <h1>Dá pra pagar?</h1>
+    <p>Qual a forma de pagamento?</p>
+    <select id="slt_formas_pagamento">
+        <option value="0">Selecione uma opção</option>
+        <option value="1">Dinheiro</option>
+        <option value="2">Cartão de Débito</option>
+        <option value="3">Cartão de Crédito</option>
+        <option value="4">Boleto</option>
+    </select>
+    <br><br>
+    <button onclick="analisar()">Analisar compra</button>
+    <br><br>
+    <span id="show"></span>
+</body>
+</html>
+<script>
+    function analisar() {
+        var formas_pagamento = slt_formas_pagamento.value
+        if (formas_pagamento == 0) {
+            alert (`Por favor, selecione alguma opção!`);
+        } else if (formas_pagamento == 1 || formas_pagamento == 2) {
+            show.innerHTML = `Você terá que pagar a vista`;
+        } else {
+            show.innerHTML = `Pagamento poderá ser parcelado`;
+        }
+    }
+</script>

@@ -1,0 +1,42 @@
+<!-- 2. Crie um programa que exibe a classe social de uma pessoa que mora em Tuvalu (um dos menores países do mundo) conforme a renda familiar mensal.
+a) Solicite a renda familiar mensal
+b) Ao clicar no botão “Analisar Renda”, deve aparecer abaixo uma dessas frases:  
+   "Classe E" (até 250)
+   "Classe D" (+250 até 900)
+   "Classe C" (+900 até 2500)
+   "Classe B" (+2500 até 9500)
+   "Classe A" (+9500) -->
+
+   <!DOCTYPE html>
+   <html lang="pt">
+   <head>
+       <meta charset="UTF-8">
+       <meta http-equiv="X-UA-Compatible" content="IE=edge">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <title>Classe social</title>
+   </head>
+   <body>
+       <h1>Classe social em Tuvalu</h1>
+       <p>Insira sua renda familiar mensal:</p>
+       <input type="text" id="ipt_renda">
+       <button onclick="analisar()">Analisar Renda</button>
+       <br><br>
+       <span id="span"></span>
+   </body>
+   </html>
+   <script>
+       function analisar() {
+           var renda = Number(ipt_renda.value);
+           if (renda <= 250) {
+               span.innerHTML = `Classe E`;
+           } else if (renda > 250 && renda <= 900) {
+               span.innerHTML = `Classe D`;
+           } else if (renda > 900 && renda <= 2500) {
+               span.innerHTML = `Classe C`;
+           } else if (renda > 2500 && renda <= 9500) {
+               span.innerHTML = `Classe B`;
+           } else {
+               span.innerHTML = `Classe A`;
+           }
+        }
+   </script>
